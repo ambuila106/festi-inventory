@@ -25,7 +25,7 @@ SECRET_KEY = 'f53lpgt1y=72ab*wuhgiv_bx_kwc^7e5kysr(pwe_sx!dz)%qt'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['streamini-31a28188a64c.herokuapp.com']
 
 
 # Application definition
