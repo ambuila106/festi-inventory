@@ -1,1 +1,1 @@
-web: python streamini.py --log-file -
+web: gunicorn streamini.wsgi --log-file -
