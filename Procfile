@@ -1,1 +1,1 @@
-web: python streamini.py
+web: python streamini.py --log-file -
