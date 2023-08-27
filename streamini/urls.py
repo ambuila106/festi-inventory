@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from social.urls import apiurls as social_apiurls
 from medias.urls import apiurls as medias_apiurls
+from main.api import UserRegistrationViewSet
 
 from rest_framework import permissions
 
@@ -29,6 +30,7 @@ urlpatterns = [
     path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     path('admin/', admin.site.urls),
     path('api/', include(apiurls, namespace='api')),
+    path('register/', UserRegistrationViewSet.as_view(), name='user-registration'),
     re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
