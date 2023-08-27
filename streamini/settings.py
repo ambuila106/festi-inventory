@@ -40,6 +40,7 @@ PREREQ_APPS = [
     'rest_framework',
     'django_filters',
     'oauth2_provider',
+    'drf_yasg',
 ]
 
 PROJECT_APPS = [
