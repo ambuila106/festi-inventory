@@ -34,7 +34,7 @@ class MediaFilter(filters.FilterSet):
         }
 
 class MediaViewSet(viewsets.ReadOnlyModelViewSet):
-    permission_classes = [permissions.IsAuthenticated, TokenHasReadWriteScope]
+    permission_classes = [permissions.AllowAny]
     serializer_class = MediaSerializer
     ordering_fields = ['name', 'type', 'categories', 'rating']
     filter_backends = [filters.DjangoFilterBackend]
@@ -59,7 +59,7 @@ class MediaViewSet(viewsets.ReadOnlyModelViewSet):
 
         return queryset
 
-    @action(detail=True, methods=['POST'])
+    @action(detail=True, methods=['POST'], permission_classes=[permissions.IsAuthenticated, TokenHasReadWriteScope])
     def mark_as_watched(self, request, pk=None):
         media = self.get_object()
 
@@ -75,7 +75,7 @@ class MediaViewSet(viewsets.ReadOnlyModelViewSet):
         else:
             return Response({'message': 'Media is already marked as viewed'}, status=status.HTTP_200_OK)
 
-    @action(detail=True, methods=['POST'])
+    @action(detail=True, methods=['POST'], permission_classes=[permissions.IsAuthenticated, TokenHasReadWriteScope])
     def update_rating(self, request, pk=None):
         media = self.get_object()
         rating = request.data.get('rating')
