@@ -71,15 +71,20 @@ class MediaViewSet(viewsets.ReadOnlyModelViewSet):
         if not viewer_media.has_watched:
             viewer_media.has_watched = True
             viewer_media.save()
-            return Response({'message': 'Movie/Series marked as viewed'}, status=status.HTTP_200_OK)
+            return Response({'message': 'Media marked as viewed'}, status=status.HTTP_200_OK)
         else:
-            return Response({'message': 'Movie/Series is already marked as viewed'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'message': 'Media is already marked as viewed'}, status=status.HTTP_200_OK)
 
     @action(detail=True, methods=['POST'])
     def update_rating(self, request, pk=None):
         media = self.get_object()
         rating = request.data.get('rating')
-        media.rating = rating
-        media.save()
+        viewer_media, created = ViewerMedia.objects.get_or_create(
+            viewer=request.user.viewer,
+            media=media
+        )
+
+        viewer_media.rating= rating
+        viewer_media.save()
         serializer = MediaSerializer(media)
         return Response(serializer.data)

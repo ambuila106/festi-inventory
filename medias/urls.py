@@ -12,4 +12,5 @@ router.register('medias', MediaViewSet, basename='products')
 apiurls = ([
     path('', include(router.urls)),
     path('medias/<int:pk>/mark-as-watched/', MediaViewSet.as_view({'post': 'mark_as_watched'}), name='mark-as-watched'),
+    path('medias/<int:pk>/update-rating/', MediaViewSet.as_view({'post': 'update_rating'}), name='update-rating'),
 ], 'medias')
