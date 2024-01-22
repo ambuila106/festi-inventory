@@ -1,7 +1,5 @@
 from django.contrib import admin
 from django.urls import path, include, re_path
-from social.urls import apiurls as social_apiurls
-from medias.urls import apiurls as medias_apiurls
 from main.api import UserRegistrationViewSet
 
 from rest_framework import permissions
@@ -22,8 +20,7 @@ schema_view = get_schema_view(
 )
 
 apiurls = ([
-    path('social/', include(social_apiurls, namespace='social')),
-    path('medias/', include(medias_apiurls, namespace='medias')),
+
 ], 'api')
 
 urlpatterns = [

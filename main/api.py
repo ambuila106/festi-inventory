@@ -8,7 +8,6 @@ from oauth2_provider.contrib.rest_framework import TokenHasReadWriteScope
 
 from random import choice
 
-from medias.models import Category, Media
 from rest_framework import generics
 from main.serializers import UserRegistrationSerializer
 
