@@ -45,6 +45,7 @@ PREREQ_APPS = [
 ]
 
 PROJECT_APPS = [
+  'inventory'
 ]
 
 INSTALLED_APPS = PREREQ_APPS + PROJECT_APPS
